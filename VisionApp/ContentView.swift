@@ -21,6 +21,7 @@ struct ContentView: View {
             .background(Color.blue)
             .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 23.0))
+            .font((.system(size: 20, weight: .bold)))
         }
     }
     
