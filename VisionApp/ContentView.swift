@@ -18,9 +18,9 @@ struct ContentView: View {
                 AsyncImage(url: gifUrl)
                     .frame(width: 300, height: 300)
                     .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-                    .padding
+                    .padding()
             }
-            Button("Create a random gift") {
+            Button("Create a random gif") {
                 fetchRandomGif()
             }
             .background(Color.blue)
