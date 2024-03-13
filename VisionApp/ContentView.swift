@@ -3,6 +3,28 @@ import RealityKit
 import RealityKitContent
 import WebKit // Import WebKit framework
 
+struct WelcomeView: View {
+  @State private var showApp = false
+
+  var body: some View {
+    VStack {
+      Text("Welcome to the Gif App!")
+        .font(.largeTitle)
+        .padding()
+      Button("Start") {
+        showApp = true
+      }
+      .background(Color.blue)
+      .foregroundColor(.white)
+      .clipShape(RoundedRectangle(cornerRadius: 23.0))
+      .font((.system(size: 20, weight: .bold)))
+    }
+    .fullScreenCover(isPresented: $showApp) {
+      ContentView()
+    }
+  }
+}
+
 struct ContentView: View {
     @State private var gifUrl: URL?
     
@@ -70,7 +92,6 @@ struct WebView: UIViewRepresentable {
     }
 }
 
-// Preview struct
 #Preview(windowStyle: .automatic) {
-    ContentView()
+  WelcomeView()
 }
