@@ -3,26 +3,54 @@ import RealityKit
 import RealityKitContent
 import WebKit // Import WebKit framework
 
+//first window that greets the user
 struct WelcomeView: View {
-  @State private var showApp = false
 
-  var body: some View {
-    VStack {
-      Text("Welcome to the Gif App!")
-        .font(.largeTitle)
-        .padding()
-      Button("Start") {
-        showApp = true
-      }
-      .background(Color.blue)
-      .foregroundColor(.white)
-      .clipShape(RoundedRectangle(cornerRadius: 23.0))
-      .font((.system(size: 20, weight: .bold)))
+    @State private var showApp = false
+
+    var body: some View {
+        ZStack { // Create a layered background for visual depth
+            Image("welcome_background") // Replace with your desired background image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all) // Stretch background to all edges
+
+            VStack {
+                Spacer() // Add space at the top
+
+                Image("app_logo") // Display a visually appealing app logo
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200) // Adjust size as needed
+
+                Text("Welcome to the Gif App!")
+                    .font(.largeTitle)
+                    .foregroundColor(.white) // Ensure contrast with background
+                    .shadow(color: .gray, radius: 5) // Add subtle shadow for depth
+
+                Text("Create and share stunning animated GIFs!")
+                    .font(.subheadline)
+                    .foregroundColor(.white.opacity(0.7)) // Dimmer text for hierarchy
+
+                Spacer() // Add space at the bottom
+
+                Button("Start Creating!") { // Emphasize action and creativity
+                    showApp = true
+                }
+                .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing)) // Vibrant gradient background
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                .font((.system(size: 20, weight: .bold)))
+                .padding(.horizontal) // Add some padding for better touch area
+
+                Spacer() // Add space below button
+            } // End VStack
+            .padding(.horizontal, 30) // Pad the content for better margins
+        } // End ZStack
+        .fullScreenCover(isPresented: $showApp) {
+            ContentView()
+        }
     }
-    .fullScreenCover(isPresented: $showApp) {
-      ContentView()
-    }
-  }
 }
 
 struct ContentView: View {
@@ -36,14 +64,20 @@ struct ContentView: View {
                     .frame(width: 500, height: 500)
                     .clipShape(RoundedRectangle(cornerRadius: 25.0))
                     .padding()
+            } else { // Show placeholder when no GIF
+                Text("No GIF yet. Create one!")
+                  .foregroundColor(.gray)
+                  .font(.headline)
             }
             Button("Create a random gif") {
                 fetchRandomGif()
             }
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 23.0))
-            .font((.system(size: 20, weight: .bold)))
+            .background(LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing)) // Vibrant gradient background
+                  .foregroundColor(.white)
+                  .clipShape(RoundedRectangle(cornerRadius: 25.0))
+                  .font(.system(size: 20, weight: .bold))
+                  .padding(.horizontal) // Add some padding for better touch area
+                  .padding(.bottom, 20) // Add some padding for better touch area
         }
     }
     
