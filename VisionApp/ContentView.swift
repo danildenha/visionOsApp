@@ -42,7 +42,7 @@ struct WelcomeView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 .font((.system(size: 20, weight: .bold)))
                 .padding(.horizontal) // Add some padding for better touch area
-
+                Model3D(named:"Scene", bundle: realityKitContentBundle)
                 Spacer() // Add space below button
             } // End VStack
             .padding(.horizontal, 30) // Pad the content for better margins
