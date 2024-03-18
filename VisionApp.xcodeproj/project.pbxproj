@@ -14,6 +14,7 @@
 		EB7505032B844DBD001E5E8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7505022B844DBD001E5E8E /* Assets.xcassets */; };
 		EB7505062B844DBD001E5E8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB7505052B844DBD001E5E8E /* Preview Assets.xcassets */; };
 		EB7505112B844DBD001E5E8E /* VisionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7505102B844DBD001E5E8E /* VisionAppTests.swift */; };
+		EBB045282BA8B8A700977CA0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB045272BA8B8A700977CA0 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		EB7505072B844DBD001E5E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB75050C2B844DBD001E5E8E /* VisionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB7505102B844DBD001E5E8E /* VisionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionAppTests.swift; sourceTree = "<group>"; };
+		EBB045272BA8B8A700977CA0 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				EB7504FC2B844DBB001E5E8E /* VisionAppApp.swift */,
+				EBB045272BA8B8A700977CA0 /* ViewModel.swift */,
 				EB7504FE2B844DBB001E5E8E /* ContentView.swift */,
 				EB7505002B844DBB001E5E8E /* ImmersiveView.swift */,
 				EB7505022B844DBD001E5E8E /* Assets.xcassets */,
@@ -219,6 +222,7 @@
 			files = (
 				EB7504FF2B844DBB001E5E8E /* ContentView.swift in Sources */,
 				EB7504FD2B844DBB001E5E8E /* VisionAppApp.swift in Sources */,
+				EBB045282BA8B8A700977CA0 /* ViewModel.swift in Sources */,
 				EB7505012B844DBB001E5E8E /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
