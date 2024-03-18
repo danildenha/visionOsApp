@@ -5,8 +5,11 @@
 //  Created by Danil Denha on 2/19/24.
 //
 
-import SwiftUI
+import Combine
 import RealityKit
+import SwiftUI
+
+import AVFoundation
 import RealityKitContent
 
 struct ImmersiveView: View {
@@ -30,7 +33,7 @@ struct ImmersiveView: View {
             } catch {
                 print("Error in RealityView's Make \(error)")
             }
-        }
+        } 
     }
     static func rotateEntityAroundYAxis(entity: Entity, angle: Float) {
             // Get the current transform of the entity
