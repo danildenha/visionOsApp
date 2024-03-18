@@ -42,13 +42,29 @@ struct WelcomeView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 25.0))
                 .font((.system(size: 20, weight: .bold)))
                 .padding(.horizontal) // Add some padding for better touch area
-                Model3D(named:"Scene", bundle: realityKitContentBundle)
                 Spacer() // Add space below button
             } // End VStack
             .padding(.horizontal, 30) // Pad the content for better margins
         } // End ZStack
         .fullScreenCover(isPresented: $showApp) {
             ContentView()
+        }
+    }
+}
+struct SphereView: View {
+    var scale = false
+
+
+    var body: some View {
+        RealityView { content in
+            let model = ModelEntity(
+                         mesh: .generateSphere(radius: 0.1),
+                         materials: [SimpleMaterial(color: .white, isMetallic: true)])
+            content.add(model)
+        } update: { content in
+            if let model = content.entities.first {
+                model.transform.scale = scale ? [1.2, 1.2, 1.2] : [1.0, 1.0, 1.0]
+            }
         }
     }
 }
