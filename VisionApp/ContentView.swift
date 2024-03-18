@@ -54,6 +54,9 @@ struct WelcomeView: View {
 
 struct ContentView: View {
     @State private var gifUrl: URL?
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
+    @Environment(ViewModel.self) var viewModel
     
     var body: some View {
         VStack {
@@ -78,6 +81,11 @@ struct ContentView: View {
                   .padding(.horizontal) // Add some padding for better touch area
                   .padding(.bottom, 20) // Add some padding for better touch area
         }
+        .onAppear {
+                    Task {
+                        await openImmersiveSpace(id: "ImmersiveSpace")
+                    }
+                }
     }
     
     func fetchRandomGif() {
