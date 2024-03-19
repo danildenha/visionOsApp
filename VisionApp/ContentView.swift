@@ -68,8 +68,8 @@ struct ContentView: View {
                     .padding()
             } else { // Show placeholder when no GIF
                 Text("No GIF yet. Create one!")
-                    .foregroundColor(.white)
-                    .font(.extraLargeTitle)
+                    .foregroundColor(.gray)
+                    .font(.headline)
             }
             Button("Create a random gif") {
                 fetchRandomGif()
