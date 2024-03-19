@@ -78,10 +78,6 @@ struct ImmersiveView: View {
     }
     
     func playIntro() {
-        // reset particle system states
-        // note that these need to happen within the main actor thread
-        // because the "components" are actor-isolated variables
-        // https://chat.openai.com/share/dc3c7b4b-8dcb-45d1-a4d1-863d7281f061
 
         Task {
             // show dialog box
