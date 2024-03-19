@@ -18,7 +18,5 @@ enum FlowState {
 
 @Observable
 class ViewModel {
-    
     var flowState = FlowState.idle
-    
 }

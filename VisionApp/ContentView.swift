@@ -7,6 +7,7 @@ import WebKit // Import WebKit framework
 struct WelcomeView: View {
 
     @State private var showApp = false
+    
 
     var body: some View {
         ZStack { // Create a layered background for visual depth
@@ -68,8 +69,10 @@ struct ContentView: View {
                     .padding()
             } else { // Show placeholder when no GIF
                 Text("No GIF yet. Create one!")
-                    .foregroundColor(.gray)
-                    .font(.headline)
+                    .foregroundColor(.white)
+                    .font(.extraLargeTitle)
+                    .foregroundColor(.white)
+                    .font(.extraLargeTitle)
             }
             Button("Create a random gif") {
                 fetchRandomGif()
@@ -80,12 +83,12 @@ struct ContentView: View {
                   .font(.system(size: 20, weight: .bold))
                   .padding(.horizontal) // Add some padding for better touch area
                   .padding(.bottom, 20) // Add some padding for better touch area
+                  .onAppear {
+                      Task {
+                          await openImmersiveSpace(id: "ImmersiveSpace")
+                      }
+                  }
         }
-        .onAppear {
-                    Task {
-                        await openImmersiveSpace(id: "ImmersiveSpace")
-                    }
-                }
     }
     
     func fetchRandomGif() {
