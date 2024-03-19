@@ -22,8 +22,39 @@ def Xform "Root"
         prepend references = @Robot_Playground.usdz@
     )
     {
-        float3 xformOp:scale = (0.002, 0.002, 0.002)
-        float3 xformOp:translate = (0.007, -0.0035, -0.01)
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (0.20851725, 0.32028905, 0.17195642)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "icy_dragon" (
+        active = true
+        prepend references = @icy_dragon.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.07, 0.07, 0.07)
+        float3 xformOp:translate = (-1.7932308, -0.018962145, -1.3033915)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Earth_hologram" (
+        active = true
+        prepend references = @Earth_hologram.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.005, 0.005, 0.005)
+        float3 xformOp:translate = (-0.8999258, 0.7536995, 1.7804224)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Blue_whale_skeleton" (
+        active = true
+        prepend references = @Blue_whale_skeleton.usdz@
+    )
+    {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (0.002763954, 0.002763954, 0.002763954)
+        float3 xformOp:translate = (1.153754, 0.90095913, -0.6022754)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
     }
 }
