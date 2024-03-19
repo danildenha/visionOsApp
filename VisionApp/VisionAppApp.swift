@@ -20,6 +20,7 @@ struct VisionAppApp: App {
 
         ImmersiveSpace(id: "ImmersiveSpace") {
             ImmersiveView()
+                .environment(viewModel)
         }
     }
 }

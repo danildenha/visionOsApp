@@ -13,6 +13,10 @@ import AVFoundation
 import RealityKitContent
 
 struct ImmersiveView: View {
+    @Environment(ViewModel.self) private var viewModel
+    @State private var inputText = ""
+    @State public var showTextField = false
+    @State public var showAttachmentButtons = false
     @State var characterEntity: Entity = {
             let headAnchor = AnchorEntity(.head)
             headAnchor.position = [0.70, -0.35, -1]
@@ -22,7 +26,8 @@ struct ImmersiveView: View {
         }()
     
     var body: some View {
-        RealityView { content in
+        RealityView { content, attachments in
+            content.add(Entity())
             // Add the initial RealityKit content
             do {
                 // identify root
@@ -30,11 +35,65 @@ struct ImmersiveView: View {
                                                        in: realityKitContentBundle)
                 characterEntity.addChild(immersiveEntity)
                 content.add(characterEntity)
+                
+                // attachments
+                guard let attachmentEntity = attachments.entity(for: "red_e") else { return }
+                attachmentEntity.position = SIMD3<Float>(0, 0.62, 0)
+                let radians = 30 * Float.pi / 180
+                ImmersiveView.rotateEntityAroundYAxis(entity: attachmentEntity, angle: radians)
+                characterEntity.addChild(attachmentEntity)
             } catch {
                 print("Error in RealityView's Make \(error)")
             }
-        } 
+        } attachments: {
+            Attachment(id: "attachments") {
+                VStack {
+                    Text("heyyyy")
+                        .frame(maxWidth: 600, alignment: .leading)
+                        .font(.extraLargeTitle2)
+                        .fontWeight(.regular)
+                        .padding(40)
+                        .glassBackgroundEffect()
+                }
+                .tag("attachment")
+                .opacity(showTextField ? 1 : 0)
+            }
+        }
+        .gesture(SpatialTapGesture().targetedToAnyEntity().onEnded {
+            _ in
+            viewModel.flowState = .intro
+        })
+        .onChange(of: viewModel.flowState) { _, newValue in
+            switch newValue {
+            case .idle:
+                break
+            case.intro:
+                playIntro();
+            case .projectileFlying:
+                break
+            case .updateWallArt:
+                break
+            }
+        }
     }
+    
+    func playIntro() {
+        // reset particle system states
+        // note that these need to happen within the main actor thread
+        // because the "components" are actor-isolated variables
+        // https://chat.openai.com/share/dc3c7b4b-8dcb-45d1-a4d1-863d7281f061
+
+        Task {
+            // show dialog box
+            if !showTextField {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    showTextField.toggle()
+                }
+            }
+        }
+    }
+
+    
     static func rotateEntityAroundYAxis(entity: Entity, angle: Float) {
             // Get the current transform of the entity
             var currentTransform = entity.transform
