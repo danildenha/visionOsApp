@@ -92,7 +92,7 @@ struct ContentView: View {
     }
     
     func fetchRandomGif() {
-        let apiKey = "JsEwg2CIMWU2uckv91l1duMPNR7S4WqB"
+        let apiKey = "none" // Use your own API key for Giphy
         let url = URL(string: "https://api.giphy.com/v1/gifs/random?api_key=\(apiKey)")!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
