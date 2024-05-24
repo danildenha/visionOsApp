@@ -2,3 +2,5 @@
 .DS_Store
 *.plist
 VisionApp.xcodeproj/project.xcworkspace/xcuserdata/danildenha.xcuserdatad/UserInterfaceState.xcuserstate
+*.mp4
+*.xcuserstate
